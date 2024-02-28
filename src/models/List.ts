@@ -1,3 +1,4 @@
+import storage from "../utils/storage";
 import ListItem, { IListItem } from "./ListItem";
 
 interface IList {
@@ -19,12 +20,17 @@ export default class List implements IList {
   }
 
   load(): void {
-    const storedList: string | null = localStorage.getItem("myList");
+    // const storedList: string | null = localStorage.getItem("myList");
 
-    if (typeof storedList !== "string") return;
+    // if (typeof storedList !== "string") return;
 
-    const parsedList: { _id: string; _item: string; _checked: boolean }[] =
-      JSON.parse(storedList);
+    // const parsedList: { _id: string; _item: string; _checked: boolean }[] =
+    //   JSON.parse(storedList);
+
+    const parsedList =
+      storage.get<{ _id: string; _item: string; _checked: boolean }[]>(
+        "myList"
+      );
 
     // ListItem 인스턴스 객체 생성 후 List 인스턴스 객체에 추가
     parsedList.forEach((itemObj) => {
@@ -44,7 +50,8 @@ export default class List implements IList {
   }
 
   save(): void {
-    localStorage.setItem("myList", JSON.stringify(this._list));
+    // localStorage.setItem("myList", JSON.stringify(this._list));
+    storage.set("myList", this._list);
   }
   clearList(): void {
     this._list = [];
