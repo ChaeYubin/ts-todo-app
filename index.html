@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -7,7 +7,18 @@
     <title>Vite + TS</title>
   </head>
   <body>
-    <div id="app"></div>
+    <h1>Todo App</h1>
+    <form>
+      <input type="text" id="item-input" placeholder="add item" />
+      <button id="add-item-btn">+</button>
+    </form>
+    <ul id="lists">
+      <!-- <li class="item">
+        <input type="checkbox" id="1" />
+        <label for="1">밥먹기</label>
+        <button class="button">X</button>
+      </li> -->
+    </ul>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
